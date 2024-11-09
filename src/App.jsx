@@ -8,7 +8,8 @@ function App() {
   const [infoData, setInfoData] = useState({
     myname: '',
     mycallsign: '',
-    mycitycounty: '',
+    mycity: '',
+    mycounty: '',
     mystate: '',
     mycqzone: '',
     myarrlsection: '',
@@ -19,6 +20,8 @@ function App() {
     qsotime: '',
     qsobandmhz: '',
     qsomode: '',
+    qsosignal: '',
+    qsoexchange: '',
     psetnx: '',
   });
 
@@ -29,19 +32,20 @@ function App() {
   }
 
   return (
-    <article>
+    <div>
       <header>
         <div className='header-nav'>Nav Items Here</div>
       </header>
       <main>
         <MyInfoForm myInfoHandlerCallback={handleSetInfoData} />
         <UrInfoForm urInfoHandlerCallback={handleSetInfoData} />
+        <div className='separator-bar'>{''}</div>
         <QslCard senderFields={infoData} />
       </main>
       <footer>
         <div className='footer-text'>Author: K7RMZ aka Nojronatron</div>
       </footer>
-    </article>
+    </div>
   );
 }
 

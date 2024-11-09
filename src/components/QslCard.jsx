@@ -1,11 +1,21 @@
+import convertKeyToName from './ConvertElementName.mjs';
+
 function QslCard(senderFields) {
-  function setElements(key, value) {
+  function keysToDisplayElements(key, value) {
+    const lowerKey = key
+      .toLowerCase()
+      .replaceAll(/\s/g, '-')
+      .replaceAll(/\(|\)|\//g, '');
+    const divId = `qsl-parentdiv-${lowerKey}`;
+    const labelId = `qsl-label-${lowerKey}`;
     return (
-      <div key={key}>
-        <label htmlFor={key}>{key}</label>
-        <p id={key} name={key}>
+      <div key={key} className='qsl-card-infocell' id={divId}>
+        <label htmlFor={key} className='qsl-card-label' id={labelId}>
+          {key}
+        </label>
+        <div id={key} name={key} className='qsl-card-content'>
           {value}
-        </p>
+        </div>
       </div>
     );
   }
@@ -13,20 +23,15 @@ function QslCard(senderFields) {
   const senderFieldsProps = Object.entries(senderFields.senderFields);
   const DisplayItems = senderFieldsProps.map(([key, value]) => {
     if (value !== '') {
-      return setElements(key, value);
+      const keyName = convertKeyToName(key);
+      return keysToDisplayElements(keyName, value);
     }
   });
 
   return (
-    <section>
-      <header>
-        <h2>QSL Card</h2>
-      </header>
-      <main>
-        <p>QSL Card Will Render Here</p>
-        {DisplayItems}
-      </main>
-    </section>
+    <article className='qsl-card-container'>
+      <div className='qsl-card-block'>{DisplayItems}</div>
+    </article>
   );
 }
 

@@ -14,13 +14,10 @@ function MyInfoForm({ myInfoHandlerCallback }) {
         name='mycallsign'
         onBlur={handleBlur}
       />
-      <label htmlFor='mycitycounty'>My City or County</label>
-      <input
-        type='text'
-        id='mycitycounty'
-        name='mycitycounty'
-        onBlur={handleBlur}
-      />
+      <label htmlFor='mycity'>My City</label>
+      <input type='text' id='mycity' name='mycity' onBlur={handleBlur} />
+      <label htmlFor='mycounty'>My County</label>
+      <input type='text' id='mycounty' name='mycounty' onBlur={handleBlur} />
       <label htmlFor='mystate'>My State</label>
       <input type='text' id='mystate' name='mystate' onBlur={handleBlur} />
       <label htmlFor='mycqzone'>My CQ Zone</label>

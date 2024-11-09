@@ -58,9 +58,16 @@ function UrInfoForm({ urInfoHandlerCallback }) {
         <option value='voice-fm'>Voice-FM</option>
         <option value='voice-ssb'>Voice-SSB</option>
       </select>
+      <label htmlFor='qsoexchange'>Exchange</label>
+      <input
+        type='text'
+        id='qsoexchange'
+        name='qsoexchange'
+        onBlur={handleBlur}
+      />
       <label htmlFor='qsosignal'>Signal Report</label>
       <input type='text' id='qsosignal' name='qsosignal' onBlur={handleBlur} />
-      <div>
+      <div className='psetnx-container'>
         <label htmlFor='pse'>Please Reply</label>
         <input
           type='radio'
@@ -69,6 +76,8 @@ function UrInfoForm({ urInfoHandlerCallback }) {
           value='PSE'
           onChange={handlePseChanged}
         />
+      </div>
+      <div className='psetnx-container'>
         <label htmlFor='tnx'>Thanks for Card!</label>
         <input
           type='radio'
