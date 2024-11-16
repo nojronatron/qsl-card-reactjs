@@ -22,7 +22,7 @@ function App() {
     qsomode: '',
     qsosignal: '',
     qsoexchange: '',
-    psetnx: '',
+    psetnx: 'pse',
   });
 
   function handleSetInfoData(itemName, itemValue) {
