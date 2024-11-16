@@ -1,22 +1,20 @@
+import { useState } from 'react';
+
 function UrInfoForm({ urInfoHandlerCallback }) {
+  const [pseTnx, setPseTnx] = useState('PSE');
+
   const handleBlur = (event) => {
     urInfoHandlerCallback(event.target.name, event.target.value);
   };
 
   function handlePseChanged(event) {
-    const pseEl = document.getElementById('pse');
-    const tnxEl = document.getElementById('tnx');
-    pseEl.checked = true;
-    tnxEl.checked = false;
-    urInfoHandlerCallback(pseEl.name, pseEl.value);
+    setPseTnx('PSE');
+    urInfoHandlerCallback('psetnx', 'PSE');
   }
 
   function handleTnxChanged(event) {
-    const pseEl = document.getElementById('pse');
-    const tnxEl = document.getElementById('tnx');
-    pseEl.checked = false;
-    tnxEl.checked = true;
-    urInfoHandlerCallback(tnxEl.name, tnxEl.value);
+    setPseTnx('TNX');
+    urInfoHandlerCallback('psetnx', 'TNX');
   }
 
   return (
@@ -74,6 +72,7 @@ function UrInfoForm({ urInfoHandlerCallback }) {
           id='pse'
           name='psetnx'
           value='PSE'
+          checked={pseTnx === 'PSE'}
           onChange={handlePseChanged}
         />
       </div>
@@ -84,6 +83,7 @@ function UrInfoForm({ urInfoHandlerCallback }) {
           id='tnx'
           name='psetnx'
           value='TNX'
+          checked={pseTnx === 'TNX'}
           onChange={handleTnxChanged}
         />
       </div>
